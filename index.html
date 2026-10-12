@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circuit Toolkit</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Circuit Toolkit</h1>
+  <p>Quick calculators for electronics work</p>
+  <button id="theme" aria-label="Toggle theme">Theme</button>
+</header>
+<nav id="tabs">
+  <button data-tab="ohm" class="active">Ohm's Law</button>
+  <button data-tab="color">Resistor Colors</button>
+  <button data-tab="div">Voltage Divider</button>
+  <button data-tab="rc">RC Time Constant</button>
+</nav>
+<main>
+  <section id="ohm" class="panel active">
+    <h2>Ohm's Law &amp; Power</h2>
+    <p class="hint">Fill in any two values; the rest are calculated.</p>
+    <div class="grid">
+      <label>Voltage (V)<input id="ohm-v" type="number" step="any"></label>
+      <label>Current (A)<input id="ohm-i" type="number" step="any"></label>
+      <label>Resistance (&Omega;)<input id="ohm-r" type="number" step="any"></label>
+      <label>Power (W)<input id="ohm-p" type="number" step="any"></label>
+    </div>
+    <button id="ohm-calc">Calculate</button>
+    <button id="ohm-clear" class="secondary">Clear</button>
+    <p id="ohm-msg" class="msg"></p>
+  </section>
+
+  <section id="color" class="panel">
+    <h2>Resistor Color Code (4-band)</h2>
+    <div class="grid">
+      <label>Band 1<select id="b1"></select></label>
+      <label>Band 2<select id="b2"></select></label>
+      <label>Multiplier<select id="b3"></select></label>
+      <label>Tolerance<select id="b4"></select></label>
+    </div>
+    <div id="resistor"><span id="r1"></span><span id="r2"></span><span id="r3"></span><span id="r4"></span></div>
+    <p class="result" id="color-out"></p>
+  </section>
+
+  <section id="div" class="panel">
+    <h2>Voltage Divider</h2>
+    <div class="grid">
+      <label>Vin (V)<input id="d-vin" type="number" step="any" value="5"></label>
+      <label>R1 (&Omega;)<input id="d-r1" type="number" step="any" value="10000"></label>
+      <label>R2 (&Omega;)<input id="d-r2" type="number" step="any" value="10000"></label>
+    </div>
+    <p class="result" id="div-out"></p>
+  </section>
+
+  <section id="rc" class="panel">
+    <h2>RC Time Constant</h2>
+    <div class="grid">
+      <label>R (&Omega;)<input id="rc-r" type="number" step="any" value="10000"></label>
+      <label>C (&micro;F)<input id="rc-c" type="number" step="any" value="10"></label>
+      <label>Vs (V)<input id="rc-v" type="number" step="any" value="5"></label>
+    </div>
+    <p class="result" id="rc-out"></p>
+    <canvas id="rc-chart" width="600" height="240"></canvas>
+  </section>
+</main>
+<footer>Circuit Toolkit &middot; runs entirely in your browser</footer>
+<script src="app.js"></script>
+</body>
+</html>
